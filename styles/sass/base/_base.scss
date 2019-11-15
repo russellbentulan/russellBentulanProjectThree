@@ -5,3 +5,35 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
 .visuallyHidden:not(:focus):not(:active) { position: absolute; width: 1px; height: 1px; margin: -1px;border: 0;padding: 0;white-space: nowrap;clip-path: inset(100%);clip: rect(00 0 0);overflow: hidden;}
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    font-size: 62.5%; // 1rem = 10px
+
+    @include respond(xxl) {
+        font-size: 75%; // 1rem = 12px
+    }
+
+    @include respond(md) {
+        font-size: 50%; // 1rem = 8px
+    }
+    
+    @include respond(sm) {
+        font-size: 56.25%; // 1rem = 9px
+    }
+    
+    @include respond(xs) {
+        font-size: 43.75%; // 1rem = 7px;
+    }
+}
+
+body {
+    overflow-x: hidden;
+}
+
+img {
+    width: 100%;
+}

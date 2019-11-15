@@ -4,23 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <title>Smoothie Generator</title>
 
     <script src="https://kit.fontawesome.com/ff995803cc.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <header>
-        <h1>Smoothie Generator</h1>
+    <header class="header">
+        <section class="wrapper">
+            <h1 class="siteTitle">Smoothie Generator</h1>
+        </section>
+        <!-- .wrapper -->
     </header>
+    
+    <main class="main">
+        <div class="wrapper">
+            <section class="columnLeft">
+                <h2 class="callToAction">Start making your smoothie</h2>
+                <img src="assets/blender.svg" alt="Food blender for smoothie making" class="mainImg">
+            </section>
+            <!-- .columnLeft -->
 
-    <main>
+            <section class="columnRight selector">
+                <h2 class="selectorTitle">Choose your ingredients</h2>
 
-    </main>
+                <!-- adding ingredient items-->
+                <ul class="selectorIngredients"></ul>
+            
+                <!-- kick off the final step -->
+                <button class="makeSmoothieButton">Make Smoothie</button>
+            </section>
+            <!-- .columnRight -->
+        </div>
+        <!-- .wrapper -->
 
-    <footer>
-
-    </footer>  
+        <section class="addIngredients">
+            <div class="wrapper addIngredientsContainer"></div>
+            <!-- .wrapper .addIngredientsContainer -->
+        </section>
+        <!-- .addIngredients -->
+    </main> 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
     <script src="scripts/script.js"></script>

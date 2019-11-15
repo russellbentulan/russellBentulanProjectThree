@@ -1,0 +1,38 @@
+/*
+    MEDIA QUERIES
+
+    $breakpoint arguments
+
+
+    0-420px: xs
+    420-680px: sm
+    681-900px: md
+    901-1240px: lg
+    (1241-1800) default styles applied
+    1801px+: xxl
+
+*/
+
+@mixin respond($breakpoint) {
+
+    @if $breakpoint == xs {
+        @media (max-width: 420px) { @content };
+    }
+
+    @if $breakpoint == sm {
+        @media (max-width: 680px) {  @content };
+    }
+
+    @if $breakpoint == md {
+        @media (max-width: 900px) { @content };
+    }
+
+    @if $breakpoint == lg {
+        @media (max-width: 1240px) { @content };
+    }
+
+    @if $breakpoint == xxl {
+        @media (min-width: 1800px) { @content };
+    }
+
+}

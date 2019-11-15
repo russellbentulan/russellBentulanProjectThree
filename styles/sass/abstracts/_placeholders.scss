@@ -1,0 +1,11 @@
+// Removes deafult list styles
+%listReset {
+    list-style: none;
+}
+
+// Adds spacing inside an element with text content
+%textContainer {
+    & > *:not(:last-child) {
+        margin-bottom: 2.4rem;
+    }
+}

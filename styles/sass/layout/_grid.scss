@@ -1,0 +1,19 @@
+.wrapper {
+    max-width: $gridWidth;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.flex {
+    display: flex;
+    flex-flow:row wrap;
+
+    &NoWrap {
+        display: flex;
+        justify-content: center;
+
+        @include respond(md) {
+            flex-wrap: wrap;
+        }
+    }
+}

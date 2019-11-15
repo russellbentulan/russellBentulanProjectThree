@@ -1,3 +1,17 @@
+/*
+    MEDIA QUERIES
+
+    $breakpoint arguments
+
+
+    0-420px: xs
+    420-680px: sm
+    681-900px: md
+    901-1240px: lg
+    (1241-1800) default styles applied
+    1801px+: xxl
+
+*/
 article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary {
   display: block;
 }
@@ -177,4 +191,77 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
           clip-path: inset(100%);
   clip: rect(0 0 0);
   overflow: hidden;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+@media (min-width: 1800px) {
+  html {
+    font-size: 75%;
+  }
+}
+
+@media (max-width: 900px) {
+  html {
+    font-size: 50%;
+  }
+}
+
+@media (max-width: 680px) {
+  html {
+    font-size: 56.25%;
+  }
+}
+
+@media (max-width: 420px) {
+  html {
+    font-size: 43.75%;
+  }
+}
+
+body {
+  overflow-x: hidden;
+}
+
+img {
+  width: 100%;
+}
+
+.wrapper {
+  max-width: 114rem;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+}
+
+.flexNoWrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .flexNoWrap {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
 }
