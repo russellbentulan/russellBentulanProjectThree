@@ -232,6 +232,7 @@ body {
 
 img {
   width: 100%;
+  display: block;
 }
 
 .wrapper {
@@ -264,4 +265,9 @@ img {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
   }
+}
+
+.columnLeft,
+.columnRight {
+  width: 50%;
 }

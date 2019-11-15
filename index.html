@@ -7,7 +7,7 @@
 
     <title>Smoothie Generator</title>
 
-    <script src="https://kit.fontawesome.com/ff995803cc.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://kit.fontawesome.com/ff995803cc.js" crossorigin="anonymous"></script> -->
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
@@ -19,7 +19,7 @@
     </header>
     
     <main class="main">
-        <div class="wrapper">
+        <div class="wrapper flex">
             <section class="columnLeft">
                 <h2 class="callToAction">Start making your smoothie</h2>
                 <img src="assets/blender.svg" alt="Food blender for smoothie making" class="mainImg">
@@ -27,10 +27,12 @@
             <!-- .columnLeft -->
 
             <section class="columnRight selector">
-                <h2 class="selectorTitle">Choose your ingredients</h2>
-
+                <h2 class="selectorTitle">Your smoothie ingredients</h2>
                 <!-- adding ingredient items-->
-                <ul class="selectorIngredients"></ul>
+                <ul class="selectedIngredients"></ul>
+                <button class="addIngredientButton">Add an Ingredient</button>
+
+
             
                 <!-- kick off the final step -->
                 <button class="makeSmoothieButton">Make Smoothie</button>

@@ -90,9 +90,34 @@ app.ingredients = [
     }
 ];
 
+// GLOBAL VARIABLES
+app.selectedIngredients = app.ingredients.filter(ingredient => ingredient.name === 'strawberries' || ingredient.name === 'almond milk');
+
+// CACHE SELECTORS
+$addButton = $('addIngredientButton');
+$selectedList = $('.selectedIngredients');
+
+// display the selected ingredients onto the page
+// if there are no selected ingredients, display a message instead
+app.displaySelectedIngredients = function() {
+    
+    // make sure nothing is in the element before starting
+    $selectedList.empty();
+
+    // check if there are ingredients that have been selected
+    if (app.selectedIngredients.length) {
+        app.selectedIngredients.forEach(ingredient => {
+            $selectedList.append(`<li>${ingredient.name}</li>`);
+        });
+    } else {
+        $selectedList.html('<li><em>Add ingredients to your smoothie</em></li>');
+    }
+    
+}
+
 // INIT FUNCTION
 app.init = () => {
-
+    app.displaySelectedIngredients();
 };
 
 // DOCUMENT READY
