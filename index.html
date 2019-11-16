@@ -18,11 +18,13 @@
         <!-- .wrapper -->
     </header>
     
-    <main class="main">
-        <div class="wrapper flex">
+    <main class="main wrapper">
+
+        <div class="flex">
+
             <section class="columnLeft">
                 <h2 class="callToAction">Start making your smoothie</h2>
-                <img src="assets/blender.svg" alt="Food blender for smoothie making" class="mainImg">
+                <!-- <img src="assets/blender.svg" alt="Food blender for smoothie making" class="mainImg"> -->
             </section>
             <!-- .columnLeft -->
 
@@ -32,21 +34,23 @@
                 <!-- adding ingredient items-->
                 <ul class="selectedIngredients"></ul>
 
-                <!-- <button class="addIngredientButton">Add an Ingredient</button> -->
+                <button class="addIngredientButton">Add an Ingredient</button>
             
                 <!-- kick off the final step -->
                 <!-- <button class="makeSmoothieButton">Make Smoothie</button> -->
             </section>
             <!-- .columnRight -->
         </div>
-        <!-- .wrapper -->
+        <!-- .flex -->
 
         <section class="addIngredients">
-            <div class="wrapper addIngredientsContainer"></div>
+            <div class="wrapper availableIngredientsContainer"></div>
             <!-- .wrapper .addIngredientsContainer -->
         </section>
         <!-- .addIngredients -->
+
     </main> 
+    <!-- .wrapper -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
     <script src="scripts/script.js"></script>

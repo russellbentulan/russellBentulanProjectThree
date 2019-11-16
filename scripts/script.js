@@ -1,5 +1,5 @@
 // NAMESPACE OBJECT
-app = {};
+const app = {};
 
 // INGREDIENT INFORMATION
 app.ingredients = [
@@ -12,11 +12,6 @@ app.ingredients = [
         name: 'blueberries',
         type: 'fruit',
         nutrients: ['vitamin e', 'folate', 'magnessium', 'postassium', 'fiber', 'vitamin c', 'vitamin k', 'manganese']
-    },
-    {
-        name: 'blueberries',
-        type: 'fruit',
-        nutrients: ['vitamin e', 'folate', 'magnesium', 'potassium', 'fiber', 'vitamin c', 'vitamin k', 'manganese']
     },
     {
         name: 'blackberries',
@@ -93,12 +88,6 @@ app.ingredients = [
 // GLOBAL VARIABLES
 app.selectedIngredients = app.ingredients.filter(ingredient => ingredient.name === 'strawberries' || ingredient.name === 'almond milk');
 
-
-// Remove a selected ingredient item from the array
-app.removeSelectedItem = () => {
-    
-}
-
 // Display the selected ingredients onto the page
 // If there are no selected ingredients, display a message instead
 app.displaySelectedIngredients = () => {
@@ -136,7 +125,6 @@ app.displaySelectedIngredients = () => {
         for (let i = 0; i < app.selectedIngredients.length; i++) {
             if (ingredientName.trim() === app.selectedIngredients[i].name) {
                 app.selectedIngredients.splice(i, 1);
-                console.log(app.selectedIngredients)
             }
         }
 
@@ -145,17 +133,59 @@ app.displaySelectedIngredients = () => {
     });
 }
 
+// Display all available ingredients
+// Disable elements that are already chosen by the user
+app.displayAvailableIngredients = () => {
+    // Make sure nothing is in the element before starting
+    app.$availabeContainer.empty();
+
+    // Display all of the ingredient names according to category
+    const ingredientCategories = ['fruit', 'thickener', 'liquid', 'mixin'];
+    ingredientCategories.forEach(category => {
+        const htmlToAppend = `
+            <section class="availableIngredientsCategory">
+                <h3 class="availableIngredientsTitle">${category}</h3>
+                <ul class="availableIngredients" id="${category}Category"></ul>
+            </section>
+        `;
+        app.$availabeContainer.append(htmlToAppend);
+    });
+
+    const $ingredientsList = $('.availableIngredients');
+    const $parentElement = $('.availableIngredients').closest('section');
+
+    // Show all ingredients, disable the ingredients selected by the user
+    app.ingredients.forEach(ingredient => {
+
+        // check if the object exists in the selectedIngredients array
+        // change the status of the button if the ingredient is already selected
+        let status = 'active';
+        const selected = app.selectedIngredients.filter(selectedIngredient => selectedIngredient.name === ingredient.name);
+        if (selected.length) {
+            status = 'disabled';
+        }
+
+        // append the item to the appropriate category list
+        const htmlToAppend = `
+            <li class="availableIngredientsItem">
+                <button class="availableIngredientsButton ${status}">${ingredient.name}</button>
+            </li>
+        `;
+        $parentElement.find(`#${ingredient.type}Category`).append(htmlToAppend);
+    });
+}
+
 // INIT FUNCTION
 app.init = () => {
-
     // CACHE SELECTORS
-    app.$addButton = $('addIngredientButton');
+    app.$addButton = $('.addIngredientButton');
     app.$selectedList = $('.selectedIngredients');
-
-    // Setting these later on
-    app.$removeIngredient;
+    app.$availabeContainer = $('.availableIngredientsContainer');
 
     app.displaySelectedIngredients();
+
+    // EVENT LISTENERS
+    app.$addButton.on('click', app.displayAvailableIngredients);
 };
 
 // DOCUMENT READY
