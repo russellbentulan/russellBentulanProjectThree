@@ -133,6 +133,28 @@ app.displaySelectedIngredients = () => {
     });
 }
 
+
+// Display all of the ingredient information inside a new element
+app.displayIngredientInfo = function() {
+    // Get the ingredient name that was just clicked
+    const ingredientName = $(this).text().trim();
+
+    // Get the information for the ingredient
+    const ingredientInfo = app.ingredients.find(ingredient => ingredient.name === ingredientName);
+
+    const nutrientsHtml = ingredientInfo.nutrients.map(nutrient => `<li class="ingredientInfoItem">${nutrient}</li>`);
+    const htmlToAppend = `
+        <article class="ingredientInfo">
+            <h3 class="ingredientInfoTitle">${ingredientInfo.name}</h3>
+            <ul class="ingredientInfoList">
+                ${nutrientsHtml.join('\n')}
+            </ul>
+        </article>
+    `;
+
+    app.$availabeContainer.append(htmlToAppend);
+}
+
 // Display all available ingredients
 // Disable elements that are already chosen by the user
 app.displayAvailableIngredients = () => {
@@ -173,6 +195,9 @@ app.displayAvailableIngredients = () => {
         `;
         $parentElement.find(`#${ingredient.type}Category`).append(htmlToAppend);
     });
+    
+    // watch for a click on each ingredient
+    $('.availableIngredientsButton').on('click', app.displayIngredientInfo);
 }
 
 // INIT FUNCTION
@@ -185,6 +210,7 @@ app.init = () => {
     app.displaySelectedIngredients();
 
     // EVENT LISTENERS
+    // DISPLAY a list of ingredients the user
     app.$addButton.on('click', app.displayAvailableIngredients);
 };
 
