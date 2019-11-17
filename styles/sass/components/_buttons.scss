@@ -4,10 +4,10 @@
     font-family: $headingFont;
     font-size: 1.6rem;
     text-transform: uppercase;
-    // background: #FDE2E2;
     background: transparent;
-    border: 2px solid #05003a;
+    border: 2px solid $colorText;
     border-radius: 8px;
+    transition: .15s all;
 
     &::after {
         content: "";
@@ -17,13 +17,16 @@
         bottom: 0;
         left: 0;
         border-radius: 8px;
-        background:#FCCDCC;
+        background: $colorAccentLight;
         transform: translate(.4em, .4em);
         z-index: -1;
         transition: .15s all;
     }
 
-    &:hover{
+    &:hover, 
+    &:focus {
+        border: 2px solid $colorTextHover;
+        
         &::after {
             transform: translate(0,0) scale(1.05, 1.25);
         }

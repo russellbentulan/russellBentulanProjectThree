@@ -1,0 +1,10 @@
+.removeSelectedIngredient {
+    background: 0;
+    border: 0;
+    font-size: 1.6rem;
+    
+    &:hover,
+    &:focus {
+        color: $colorTextHover;     
+    }
+}

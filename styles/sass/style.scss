@@ -6,7 +6,9 @@
         'base/typography';
 
 @import 'layout/flexGrid',
-        'layout/header';
+        'layout/header',
+        'layout/selectedIngredients',
+        'layout/availableIngredients';
 
 @import 'components/buttons';
 

@@ -26,7 +26,9 @@ h4 {
         font-size: 2rem;
         text-transform: capitalize;
     }
-}
-.selectedIngredientsItem {
-    font-size: 1.6rem;
+
+    &Item {
+        font-size: 2rem;
+        text-transform: capitalize;
+    }
 }

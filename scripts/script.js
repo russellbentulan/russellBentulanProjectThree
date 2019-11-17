@@ -278,6 +278,9 @@ app.init = () => {
 
     app.displaySelectedIngredients();
 
+    // Styling WIP
+    app.displayAvailableIngredients();
+
     // Event handler for the [ADD AN INGREDIENT] button
     app.$addButton.on('click', app.displayAvailableIngredients);
 };

@@ -229,8 +229,8 @@ html {
 body {
   overflow-x: hidden;
   min-height: 100vh;
-  color: #05003a;
-  background-color: #fef8f8;
+  color: #151D1C;
+  background-color: #FEF8F8;
 }
 
 img {
@@ -268,7 +268,8 @@ h4 {
 }
 
 .selectedIngredientsItem {
-  font-size: 1.6rem;
+  font-size: 2rem;
+  text-transform: capitalize;
 }
 
 .wrapper {
@@ -312,6 +313,57 @@ h4 {
   padding: 2rem 0;
 }
 
+.removeSelectedIngredient {
+  background: 0;
+  border: 0;
+  font-size: 1.6rem;
+}
+
+.removeSelectedIngredient:hover, .removeSelectedIngredient:focus {
+  color: #627D7B;
+}
+
+.availableIngredientsContainer {
+  text-align: center;
+}
+
+.availableIngredientsTitle {
+  text-transform: capitalize;
+  font-size: 3.2rem;
+  letter-spacing: .3px;
+  margin-bottom: .8rem;
+}
+
+.availableIngredientsButton {
+  margin: .8rem auto;
+  text-transform: capitalize;
+  font-size: 2.4rem;
+  font-weight: 600;
+  background: transparent;
+  border: 0;
+  color: #D3392B;
+  overflow: hidden;
+}
+
+.availableIngredientsButton:not([disabled])::after {
+  content: "";
+  width: 0;
+  height: 2px;
+  background-color: #151D1C;
+  display: block;
+  margin: 0 auto;
+  -webkit-transition: .2s all;
+  transition: .2s all;
+}
+
+.availableIngredientsButton:hover::after, .availableIngredientsButton:focus::after {
+  width: 100%;
+}
+
+.availableIngredientsButton[disabled] {
+  color: #627D7B;
+}
+
 .button {
   position: relative;
   padding: .8rem 1.6rem;
@@ -319,8 +371,10 @@ h4 {
   font-size: 1.6rem;
   text-transform: uppercase;
   background: transparent;
-  border: 2px solid #05003a;
+  border: 2px solid #151D1C;
   border-radius: 8px;
+  -webkit-transition: .15s all;
+  transition: .15s all;
 }
 
 .button::after {
@@ -331,7 +385,7 @@ h4 {
   bottom: 0;
   left: 0;
   border-radius: 8px;
-  background: #FCCDCC;
+  background: #fccdcc;
   -webkit-transform: translate(0.4em, 0.4em);
           transform: translate(0.4em, 0.4em);
   z-index: -1;
@@ -339,7 +393,11 @@ h4 {
   transition: .15s all;
 }
 
-.button:hover::after {
+.button:hover, .button:focus {
+  border: 2px solid #627D7B;
+}
+
+.button:hover::after, .button:focus::after {
   -webkit-transform: translate(0, 0) scale(1.05, 1.25);
           transform: translate(0, 0) scale(1.05, 1.25);
 }
