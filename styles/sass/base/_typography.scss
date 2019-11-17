@@ -1,0 +1,26 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Asap', sans-serif;
+    letter-spacing: -.02em;
+    font-weight: 600;
+}
+
+.siteTitle {
+    font-size: 4rem;
+    line-height: .85;
+    display: inline-block;
+    margin-right: auto;
+    text-align: center;
+}
+
+.callToAction {
+    font-size: 2.4rem;
+    font-family: 'Asap', sans-serif;
+    font-weight: 900;
+}

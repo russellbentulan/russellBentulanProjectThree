@@ -215,8 +215,9 @@ app.removeSelectedIngredient = function () {
     // Remove the element from the page
     $parentElement.remove();
 
-    // Refresh the selected ingredients element
+    // Refresh the selected ingredients and available ingredients element
     app.displayAvailableIngredients();
+    app.displaySelectedIngredients();
 }
 
 // Function: Display Available Ingredients

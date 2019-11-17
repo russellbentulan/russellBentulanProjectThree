@@ -235,6 +235,33 @@ img {
   display: block;
 }
 
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Asap', sans-serif;
+  letter-spacing: -.02em;
+  font-weight: 600;
+}
+
+.siteTitle {
+  font-size: 4rem;
+  line-height: .85;
+  display: inline-block;
+  margin-right: auto;
+  text-align: center;
+}
+
+.callToAction {
+  font-size: 2.4rem;
+  font-family: 'Asap', sans-serif;
+  font-weight: 900;
+}
+
 .wrapper {
   max-width: 114rem;
   width: 90%;
@@ -270,4 +297,14 @@ img {
 .columnLeft,
 .columnRight {
   width: 50%;
+}
+
+.header {
+  padding: 2rem 0;
+}
+
+body {
+  min-height: 100vh;
+  color: #05003a;
+  background-color: #fef8f8;
 }

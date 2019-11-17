@@ -5,4 +5,7 @@
 @import 'base/base',
         'base/typography';
 
-@import 'layout/grid';
+@import 'layout/flexGrid',
+        'layout/header';
+
+@import 'themes/theme';
