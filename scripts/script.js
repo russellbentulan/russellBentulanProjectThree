@@ -132,24 +132,7 @@ app.displaySelectedIngredients = () => {
     }
 
     // Event handler for the [-] button
-    // Removes the item from the user's selected ingredients
-    $('.removeSelectedIngredient').on('click', function () {
-        // Get the parent element
-        const $parentElement = $(this).closest('li');
-
-        // Get the name of the ingredient from the data attribute
-        const ingredientName = $parentElement.data('ingredient');
-
-        // Remove the ingredient from the selectedIngredients list
-        for (let i = 0; i < app.selectedIngredients.length; i++) {
-            if (ingredientName === app.selectedIngredients[i].name) {
-                app.selectedIngredients.splice(i, 1);
-            }
-        }
-
-        // Remove the element from the DOM
-        $parentElement.remove();
-    });
+    $('.removeSelectedIngredient').on('click', app.removeSelectedIngredient);
 }
 
 // Function: Display Ingredient Info
@@ -169,24 +152,75 @@ app.displayIngredientInfo = function() {
 
     const htmlToAppend = `
         <article class="ingredientInfo">
-            <div class="ingredientInfoImg">
-                <img src="./assets/ingredientPictures/${ingredientInfo.img}" alt="${ingredientInfo.name}, a ${ingredientInfo.type} ingredient for smoothies">
-            </div>
-            <div class="ingredientInfoText">
+            <header>
+                <div class="ingredientInfoImg">
+                    <img src="./assets/ingredientPictures/${ingredientInfo.img}" alt="${ingredientInfo.name}, a ${ingredientInfo.type} ingredient for smoothies">
+                </div>
                 <h3 class="ingredientInfoTitle">${ingredientInfo.name}</h3>
+            </header>
                 
+            <section class="ingredientInfoText">
                 <ul class="ingredientInfoList">
                     ${nutrientsHtml.join('\n')}
                 </ul>
-            </div>
+                <button class="ingredientInfoButton" data-ingredient="${ingredientInfo.name}">Add ${ingredientInfo.name}</button>
+            </section>
         </article>
     `;
 
     app.$infoContainer.append(htmlToAppend);
+
+    // Event handler for the [ADD ingredient] button
+    $('.ingredientInfoButton').on('click', app.addSelectedIngredient);
+}
+
+// Function: Add Selected Ingredient
+// Adds the user's selection to the ingredients list and updates the page
+app.addSelectedIngredient = function () {
+    // Get the ingredient name from the data attribute
+    const ingredientName = $(this).data('ingredient');
+
+    // Get the corresponding object from the ingredients list
+    const ingredientInfo = app.ingredients.find(ingredient => ingredient.name === ingredientName);
+
+    // Add the item to the selectedIngredients list
+    app.selectedIngredients.push(ingredientInfo);
+    
+    // Disable the corresponding button in the selected ingredients element
+    $(`.availableIngredientsButton:contains(${ingredientName})`).attr('disabled', true);
+    
+    // Refresh the selected ingredients element
+    app.displaySelectedIngredients();
+
+    // Disable this button
+    $(this).attr('disabled', true);
+}
+
+// Function: Remove Selected Ingredient
+// Adds the user's selection to the ingredients list and updates the page
+app.removeSelectedIngredient = function () {
+    // Get the parent element
+    const $parentElement = $(this).closest('li');
+
+    // Get the name of the ingredient from the data attribute
+    const ingredientName = $parentElement.data('ingredient');
+
+    // Remove the ingredient from the selectedIngredients list
+    for (let i = 0; i < app.selectedIngredients.length; i++) {
+        if (ingredientName === app.selectedIngredients[i].name) {
+            app.selectedIngredients.splice(i, 1);
+        }
+    }
+
+    // Remove the element from the page
+    $parentElement.remove();
+
+    // Refresh the selected ingredients element
+    app.displayAvailableIngredients();
 }
 
 // Function: Display Available Ingredients
-// Places all available ingredients onto the page
+// Places all availalbe ingredients onto the page
 app.displayAvailableIngredients = () => {
     // Empty the container element
     app.$availabeContainer.empty();
