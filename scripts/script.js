@@ -128,7 +128,7 @@ app.displaySelectedIngredients = () => {
         });
     } else {
         // Display a message when there are no selected ingredients
-        app.$selectedList.html('<li><em>Add ingredients to your smoothie</em></li>');
+        app.$selectedList.html('<li class="selectedIngredientsItem"><em>Add ingredients to your smoothie</em></li>');
     }
 
     // Event handler for the [-] button
@@ -192,7 +192,7 @@ app.addSelectedIngredient = function () {
     // Refresh the selected ingredients element
     app.displaySelectedIngredients();
 
-    // Disable this button
+    // Disable this button so it cannot be added twice
     $(this).attr('disabled', true);
 }
 
@@ -271,10 +271,10 @@ app.displayAvailableIngredients = () => {
 // Initializes the application
 app.init = () => {
     // Caching selectors
-    app.$addButton = $('.addIngredientButton');
-    app.$selectedList = $('.selectedIngredients');
-    app.$availabeContainer = $('.availableIngredientsContainer');
-    app.$infoContainer = $('.ingredientInfoContainer');
+    app.$addButton = $('#addIngredientButton');
+    app.$selectedList = $('#selectedList');
+    app.$availabeContainer = $('#availabeContainer');
+    app.$infoContainer = $('#infoContainer');
 
     app.displaySelectedIngredients();
 

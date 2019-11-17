@@ -17,30 +17,30 @@
     <header class="header">
         <section class="wrapper">
             <h1 class="siteTitle">Smoothie Generator</h1>
-
-            <h2 class="callToAction"></h2>
         </section>
         <!-- .wrapper -->
     </header>
     
-    <main class="main wrapper">
-        <div class="flex">
+    <main class="main">
+        <div class="flex wrapper">
+
+            <section class="columnLeft">
+                <img src="assets/blender.svg" alt="Food blender for smoothie making" class="mainImg">
+            </section>
+            <!-- .columnLeft -->
             
-            <section class="columnLeft selector">
-                <h2 class="selectorTitle">Your smoothie ingredients</h2>
+            <section class="columnRight selectedIngredients">
+                <h2 class="selectedIngredientsTitle">Your smoothie ingredients</h2>
                 
-                <!-- adding ingredient items-->
-                <ul class="selectedIngredients"></ul>
+                <ul class="selectedIngredientsList" id="selectedList">
+                    <!-- selected ingredients go here -->
+                </ul>
                 
-                <button class="addIngredientButton">Add an Ingredient</button>
+                <!-- displays the ingredient selection menu -->
+                <button class="button" id="addIngredientButton">Add an Ingredient</button>
                 
                 <!-- kick off the final step -->
                 <!-- <button class="makeSmoothieButton">Make Smoothie</button> -->
-            </section>
-            <!-- .columnLeft -->
-
-            <section class="columnRight">
-                <img src="assets/blender.svg" alt="Food blender for smoothie making" class="mainImg">
             </section>
             <!-- .columnRight -->
         </div>
@@ -48,8 +48,8 @@
 
         <section class="addIngredients">
             <div class="wrapper flex">
-                <div class="columnLeft availableIngredientsContainer"></div>
-                <div class="columnRight ingredientInfoContainer"></div>
+                <div class="columnLeft availableIngredientsContainer" id="availabeContainer"></div>
+                <div class="columnRight ingredientInfoContainer" id="infoContainer"></div>
             </div>
             <!-- .wrapper .addIngredientsContainer -->
         </section>

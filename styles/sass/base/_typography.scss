@@ -1,12 +1,15 @@
+$bodyFont: 'Roboto', sans-serif;
+$headingFont: 'Asap', sans-serif;
+
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: $bodyFont;
 }
 
 h1,
 h2,
 h3,
 h4 {
-    font-family: 'Asap', sans-serif;
+    font-family: $headingFont;
     letter-spacing: -.02em;
     font-weight: 600;
 }
@@ -14,13 +17,16 @@ h4 {
 .siteTitle {
     font-size: 4rem;
     line-height: .85;
-    display: inline-block;
     margin-right: auto;
     text-align: center;
 }
 
-.callToAction {
-    font-size: 2.4rem;
-    font-family: 'Asap', sans-serif;
-    font-weight: 900;
+.selectedIngredients {
+    &Title {
+        font-size: 2rem;
+        text-transform: capitalize;
+    }
+}
+.selectedIngredientsItem {
+    font-size: 1.6rem;
 }
