@@ -1,7 +1,7 @@
-// NAMESPACE OBJECT
+// Global namespacing object
 const app = {};
 
-// INGREDIENT INFORMATION
+// Ingredient list
 app.ingredients = [
     {
         name: 'strawberries',
@@ -101,22 +101,24 @@ app.ingredients = [
     }
 ];
 
-// GLOBAL VARIABLES
+// User selected ingedients
+// Fill when the user clicks the [ADD INGREDIENT] button
 app.selectedIngredients = [];
 
-// Display the selected ingredients onto the page
-// If there are no selected ingredients, display a message instead
+// Function: Display Selected Ingredients
+// Displays the user's selected ingredients
 app.displaySelectedIngredients = () => {
     
-    // Make sure nothing is in the element before starting
+    // Empty the container element
     app.$selectedList.empty();
 
     // Check if there are ingredients that have been selected
     if (app.selectedIngredients.length) {
+        // Display the ingredients that are selected
         app.selectedIngredients.forEach(ingredient => {
 
             const htmlToAppend = `
-                <li class="selectedIngredientsItem">
+                <li class="selectedIngredientsItem" data-ingredient="${ingredient.name}">
                     <button class="removeSelectedIngredient"><i class="fas fa-minus-circle"></i></button>
                     <span class="selectedIngredient">${ingredient.name}<span>
                 </li>
@@ -125,34 +127,35 @@ app.displaySelectedIngredients = () => {
             app.$selectedList.append(htmlToAppend);
         });
     } else {
+        // Display a message when there are no selected ingredients
         app.$selectedList.html('<li><em>Add ingredients to your smoothie</em></li>');
-    } 
+    }
 
-    // Add an event listener for the ingredient removal button
-    $('.removeSelectedIngredient').on('click', function() {
-
-        // Get the container element
+    // Event handler for the [-] button
+    // Removes the item from the user's selected ingredients
+    $('.removeSelectedIngredient').on('click', function () {
+        // Get the parent element
         const $parentElement = $(this).closest('li');
 
-        // Get the name of the ingredient
-        const ingredientName = $parentElement.find('.selectedIngredient').text();
+        // Get the name of the ingredient from the data attribute
+        const ingredientName = $parentElement.data('ingredient');
 
         // Remove the ingredient from the selectedIngredients list
         for (let i = 0; i < app.selectedIngredients.length; i++) {
-            if (ingredientName.trim() === app.selectedIngredients[i].name) {
+            if (ingredientName === app.selectedIngredients[i].name) {
                 app.selectedIngredients.splice(i, 1);
             }
         }
 
-        // Remove the item from the DOM
+        // Remove the element from the DOM
         $parentElement.remove();
     });
 }
 
-
-// Display all of the ingredient information inside a new element
+// Function: Display Ingredient Info
+// Places all the ingredient information onto the page
 app.displayIngredientInfo = function() {
-    // Clear the element each time a new ingredient is chosen
+    // Empty the parent element
     app.$infoContainer.empty();
 
     // Get the ingredient name that was just clicked
@@ -161,10 +164,9 @@ app.displayIngredientInfo = function() {
     // Get the information for the ingredient
     const ingredientInfo = app.ingredients.find(ingredient => ingredient.name === ingredientName);
 
-    // Display a list of ingredient nutritional information
+    // Save a list of ingredient nutritional information
     const nutrientsHtml = ingredientInfo.nutrients.map(nutrient => `<li class="ingredientInfoItem">${nutrient}</li>`);
 
-    // Display all of the ingredient information
     const htmlToAppend = `
         <article class="ingredientInfo">
             <div class="ingredientInfoImg">
@@ -183,14 +185,16 @@ app.displayIngredientInfo = function() {
     app.$infoContainer.append(htmlToAppend);
 }
 
-// Display all available ingredients
-// Disable elements that are already chosen by the user
+// Function: Display Available Ingredients
+// Places all available ingredients onto the page
 app.displayAvailableIngredients = () => {
-    // Make sure nothing is in the element before starting
+    // Empty the container element
     app.$availabeContainer.empty();
 
-    // Display all of the ingredient names according to category
+    // Save a list of all the ingredient categories
     const ingredientCategories = ['fruit', 'thickener', 'liquid', 'mixin'];
+
+    // Display all of the ingredients according to their category type
     ingredientCategories.forEach(category => {
         const htmlToAppend = `
             <section class="availableIngredientsCategory">
@@ -201,20 +205,21 @@ app.displayAvailableIngredients = () => {
         app.$availabeContainer.append(htmlToAppend);
     });
 
+    // Get the parent element
     const $parentElement = $('.availableIngredients').closest('section');
 
-    // Show all ingredients, disable the ingredients selected by the user
+    // Puts all of the ingredients into the parent element
     app.ingredients.forEach(ingredient => {
 
-        // check if the object exists in the selectedIngredients array
-        // change the status of the button if the ingredient is already selected
+        // Check if the object exists in the selectedIngredients array
+        // Disable the button if it has already been selected by the user
         let status = '';
         const selected = app.selectedIngredients.filter(selectedIngredient => selectedIngredient.name === ingredient.name);
         if (selected.length) {
             status = 'disabled';
         }
 
-        // append the item to the appropriate category list
+        // Put the item into the appropriate category list element
         const htmlToAppend = `
             <li class="availableIngredientsItem">
                 <button class="availableIngredientsButton" ${status}>${ingredient.name}</button>
@@ -223,13 +228,14 @@ app.displayAvailableIngredients = () => {
         $parentElement.find(`#${ingredient.type}Category`).append(htmlToAppend);
     });
     
-    // watch for a click on each ingredient
+    // Event handler for the [INGREDIENT] button
     $('.availableIngredientsButton').on('click', app.displayIngredientInfo);
 }
 
-// INIT FUNCTION
+// Function: Init
+// Initializes the application
 app.init = () => {
-    // CACHE SELECTORS
+    // Caching selectors
     app.$addButton = $('.addIngredientButton');
     app.$selectedList = $('.selectedIngredients');
     app.$availabeContainer = $('.availableIngredientsContainer');
@@ -237,12 +243,10 @@ app.init = () => {
 
     app.displaySelectedIngredients();
 
-    // EVENT LISTENERS
-    // DISPLAY a list of ingredients the user
+    // Event handler for the [ADD AN INGREDIENT] button
     app.$addButton.on('click', app.displayAvailableIngredients);
 };
 
-// DOCUMENT READY
 $(function() {
     app.init();
 });
