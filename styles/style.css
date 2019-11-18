@@ -313,6 +313,26 @@ h4 {
   padding: 2rem 0;
 }
 
+.categoriesContainer {
+  padding: 2rem 0;
+}
+
+.categoriesList {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.selectedIngredients {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.selectedIngredientsTitle, .selectedIngredientsList {
+  margin-bottom: 1.2rem;
+}
+
 .removeSelectedIngredient {
   background: 0;
   border: 0;
@@ -393,11 +413,8 @@ h4 {
   transition: .15s all;
 }
 
-.button:hover, .button:focus {
-  border: 2px solid #627D7B;
-}
-
 .button:hover::after, .button:focus::after {
+  background: #F37F78;
   -webkit-transform: translate(0, 0) scale(1.05, 1.25);
           transform: translate(0, 0) scale(1.05, 1.25);
 }

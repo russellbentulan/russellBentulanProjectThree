@@ -37,7 +37,7 @@
                 </ul>
                 
                 <!-- displays the ingredient selection menu -->
-                <button class="button" id="addIngredientButton">Add an Ingredient</button>
+                <button class="button buttonOutline" id="addIngredientButton">Add an Ingredient</button>
                 
                 <!-- kick off the final step -->
                 <!-- <button class="makeSmoothieButton">Make Smoothie</button> -->
@@ -49,14 +49,16 @@
         <section class="addIngredients">
             <div class="wrapper">
 
-                <nav class="ingredientTypesContainer">
-                    <!-- all ingredient categories go here -->
-                </nav>
+                <header class="categoriesContainer">
+                    <ul class="categoriesList flex" id="categoriesList">
+                        <!-- all ingredient categories go here -->
+                    </ul>
+                </header>
 
-                <div class="availableIngredientsContainer" id="availabeContainer">
+                <main class="availableIngredientsContainer" id="availableContainer">
                     <!-- all ingredients go here -->
-                </div>
-                <!-- .availableIngredientsContainer -->
+                </main>
+                
             </div>
             <!-- .wrapper -->
         </section>

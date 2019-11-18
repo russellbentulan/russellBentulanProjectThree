@@ -101,6 +101,9 @@ app.ingredients = [
     }
 ];
 
+// Category types
+app.categories = ['fruit', 'thickener', 'liquid', 'mixin'];
+
 // User selected ingedients
 // Fill when the user clicks the [ADD INGREDIENT] button
 app.selectedIngredients = [];
@@ -224,20 +227,17 @@ app.removeSelectedIngredient = function () {
 // Places all availalbe ingredients onto the page
 app.displayAvailableIngredients = () => {
     // Empty the container element
-    app.$availabeContainer.empty();
-
-    // Save a list of all the ingredient categories
-    const ingredientCategories = ['fruit', 'thickener', 'liquid', 'mixin'];
+    app.$availableContainer.empty();
 
     // Display all of the ingredients according to their category type
-    ingredientCategories.forEach(category => {
+    app.categories.forEach(category => {
         const htmlToAppend = `
             <section class="availableIngredientsCategory">
                 <h3 class="availableIngredientsTitle">${category}</h3>
                 <ul class="availableIngredients" id="${category}Category"></ul>
             </section>
         `;
-        app.$availabeContainer.append(htmlToAppend);
+        app.$availableContainer.append(htmlToAppend);
     });
 
     // Get the parent element
@@ -267,22 +267,45 @@ app.displayAvailableIngredients = () => {
     $('.availableIngredientsButton').on('click', app.displayIngredientInfo);
 }
 
+// Function: Display Categories
+// Places all category selectors onto the page
+app.displayCategories = () => {
+
+    // Empty the container element
+    app.$categoriesList.empty();
+
+    // Show a button for each category type
+    app.categories.forEach(category => {
+        const htmlToAppend = `
+            <li class="categoriesItem">
+                <button class="categoriesButton button">${category}</button>
+            </li>
+        `;
+        app.$categoriesList.append(htmlToAppend);
+    });
+
+    // Event listener for the [category] buttons
+    
+}
+
 // Function: Init
 // Initializes the application
 app.init = () => {
     // Caching selectors
     app.$addButton = $('#addIngredientButton');
     app.$selectedList = $('#selectedList');
-    app.$availabeContainer = $('#availabeContainer');
+    app.$availableContainer = $('#availableContainer');
     app.$infoContainer = $('#infoContainer');
+    app.$categoriesList = $('#categoriesList');
 
     app.displaySelectedIngredients();
 
     // Styling WIP
+    app.displayCategories();
     app.displayAvailableIngredients();
 
     // Event handler for the [ADD AN INGREDIENT] button
-    app.$addButton.on('click', app.displayAvailableIngredients);
+    app.$addButton.on('click', app.displayCategories);
 };
 
 $(function() {

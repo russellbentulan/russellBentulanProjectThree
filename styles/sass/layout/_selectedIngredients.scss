@@ -1,3 +1,12 @@
+.selectedIngredients {
+    align-self: center;
+
+    &Title,
+    &List {
+        margin-bottom: 1.2rem;
+    }
+}
+
 .removeSelectedIngredient {
     background: 0;
     border: 0;

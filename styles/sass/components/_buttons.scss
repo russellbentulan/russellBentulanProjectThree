@@ -24,10 +24,9 @@
     }
 
     &:hover, 
-    &:focus {
-        border: 2px solid $colorTextHover;
-        
+    &:focus {        
         &::after {
+            background: $colorAccent;
             transform: translate(0,0) scale(1.05, 1.25);
         }
     }
