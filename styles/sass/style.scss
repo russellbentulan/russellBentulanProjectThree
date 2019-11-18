@@ -5,6 +5,9 @@
 @import 'base/base',
         'base/typography';
 
+@import 'components/buttons',
+        'components/slidingCard';
+
 @import 'layout/flexGrid',
         'layout/header',
         'layout/categories',
@@ -12,6 +15,3 @@
         'layout/availableIngredients',
         'layout/ingredientInfo',
         'layout/result';
-
-@import 'components/buttons',
-        'components/slidingCard';

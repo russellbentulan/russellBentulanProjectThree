@@ -104,10 +104,6 @@ app.ingredients = [
 // Category types
 app.categories = ['fruit', 'thickener', 'mixin', 'liquid'];
 
-// User selected ingedients
-// Fill when the user clicks the [ADD ingredient.name] button
-app.selectedIngredients = [app.ingredients[0], app.ingredients[7], app.ingredients[14]];
-
 // Function: Display Selected Ingredients
 // Displays the user's selected ingredients
 app.displaySelectedIngredients = () => {
@@ -338,6 +334,7 @@ app.makeTheSmoothie = function() {
     }
 
     // Remove DOM Elements before showing the results
+    app.$availableContainer.empty();
     app.$categoriesList.fadeOut();
     app.$selectedList.children().fadeOut();
     $('.mainImg').fadeOut();
@@ -370,6 +367,7 @@ app.makeTheSmoothie = function() {
                 <section class="columnLeft">
                     <h1 class="resultTitle">Your Smoothie Recipe</h1>
                     <p class="resultIngredients">${ingredientNames.join(', ')}</p>
+                    <button class="button buttonDark resultButton">Start Over</button>
                 </section>
                 <section class="columnRight">
                     <h2 class="nutrientsTitle">Nutritional Information</h2>
@@ -381,8 +379,23 @@ app.makeTheSmoothie = function() {
         </section>
     `;
 
+    // Wait for other elements to fade out before appending this element
     $(htmlToAppend).hide().appendTo('.main').delay(1500).fadeIn();
+
+    // Event listener for the [Start Over] button
+    $('.resultButton').on('click', app.restart);
 }
+
+// Function: Restart
+// Reset the app
+app.restart = function () {
+    $('.result').fadeOut();
+    app.$categoriesList.fadeIn();
+    app.$selectedList.children().fadeIn();
+    $('.mainImg').fadeIn();
+    $('.selectedIngredientsTitle').fadeIn();
+    app.init();
+} 
 
 // Function: Init
 // Initializes the application
@@ -395,13 +408,17 @@ app.init = () => {
     app.$categoriesList = $('#categoriesList');
     app.$slidingCard = $('.slidingCard');
 
+    // User selected ingedients
+    // Fill when the user clicks the [ADD ingredient.name] button
+    app.selectedIngredients = [];
+
     app.displaySelectedIngredients();
 
     app.displayCategories();
 
     // Event listener for the [MAKE MY SMOOTHIE] button
     app.$makeSmoothie.on('click', app.makeTheSmoothie);
-    // app.$makeSmoothie.hide();
+    app.$makeSmoothie.hide();
 };
 
 $(function() {
