@@ -105,7 +105,7 @@ app.ingredients = [
 app.categories = ['fruit', 'thickener', 'liquid', 'mixin'];
 
 // User selected ingedients
-// Fill when the user clicks the [ADD INGREDIENT] button
+// Fill when the user clicks the [ADD ingredient.name] button
 app.selectedIngredients = [];
 
 // Function: Display Selected Ingredients
@@ -172,6 +172,7 @@ app.displayIngredientInfo = function() {
     `;
 
     app.$infoContainer.append(htmlToAppend);
+    app.$infoContainer.addClass('slidingCardActive');
 
     // Event handler for the [ADD ingredient] button
     $('.ingredientInfoButton').on('click', app.addSelectedIngredient);

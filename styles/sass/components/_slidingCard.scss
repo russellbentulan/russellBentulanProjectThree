@@ -1,0 +1,11 @@
+.slidingCard {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    width: 100%;
+    transition: .5s right;
+
+    &Active {
+        right: 0;
+    }
+}
