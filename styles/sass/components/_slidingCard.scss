@@ -4,7 +4,7 @@
     right: 100%;
     width: 100%;
     transition: .5s right;
-    background: #FDFBD1;
+    background: $colorAccentLight;
     box-shadow: 0 0 2px rgba(0,0,0,.3);
 
     &Active {
@@ -21,7 +21,7 @@
         transition: .2s color;
 
         &:hover {
-            color: $colorAccentLight;
+            color: $colorPrimaryLight;
         }
     }
 

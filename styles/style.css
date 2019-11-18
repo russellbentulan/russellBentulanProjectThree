@@ -230,7 +230,7 @@ body {
   overflow-x: hidden;
   min-height: 100vh;
   color: #151D1C;
-  background-color: #FEF8F8;
+  background: #FEF8F8;
 }
 
 img {
@@ -471,6 +471,14 @@ h4 {
   background: #F37F78;
   -webkit-transform: translate(0, 0) scale(1.05, 1.25);
           transform: translate(0, 0) scale(1.05, 1.25);
+}
+
+.buttonCta::after {
+  background-color: #F4E27C;
+}
+
+.buttonCta:hover::after {
+  background-color: #C2981F;
 }
 
 .buttonDark {

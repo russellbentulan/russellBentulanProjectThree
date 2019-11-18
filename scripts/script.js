@@ -106,7 +106,7 @@ app.categories = ['fruit', 'thickener', 'mixin', 'liquid'];
 
 // User selected ingedients
 // Fill when the user clicks the [ADD ingredient.name] button
-app.selectedIngredients = [];
+app.selectedIngredients = [app.ingredients[0], app.ingredients[7], app.ingredients[14]];
 
 // Function: Display Selected Ingredients
 // Displays the user's selected ingredients
@@ -132,6 +132,11 @@ app.displaySelectedIngredients = () => {
     } else {
         // Display a message when there are no selected ingredients
         app.$selectedList.html('<li class="selectedIngredientsItem"><em>Add ingredients to your smoothie</em></li>');
+    }
+
+    // Display the [MAKE MY SMOOTHIE] button when there are 2 or more ingredients
+    if (app.selectedIngredients.length > 1) {
+        app.$makeSmoothie.slideDown();
     }
 
     // Event handler for the [-] button
@@ -233,6 +238,11 @@ app.removeSelectedIngredient = function () {
     // Remove the element from the page
     $parentElement.remove();
 
+    // Remove the [Make My Smoothie] button when the selected items list is lower than 2
+    if (app.selectedIngredients.length < 2) {
+        app.$makeSmoothie.fadeOut();
+    }
+
     // Refresh the selected ingredients and available ingredients element
     app.displayAvailableIngredients();
     app.displaySelectedIngredients();
@@ -306,11 +316,33 @@ app.displayCategories = () => {
     $('.categoriesButton').on('click', app.displayAvailableIngredients);
 }
 
+// Function: Make The Smoothie
+// Add up all the selected ingredients and display the results to the page
+app.makeTheSmoothie = () => {
+    // Join together the ingredient names
+    const ingredientNames = app.selectedIngredients.map(ingredient => ingredient.name);
+    const nameString = ingredientNames.join(', ');
+
+    // Add up the nutritional information
+    let nutrientCount = {};
+    const ingredientNutrients = app.selectedIngredients.map(ingredient => ingredient.nutrients);
+    for (let i = 0; i < ingredientNutrients.length; i++) {
+        nutrients = ingredientNutrients[i];
+        nutrients.forEach(nutrient => nutrientCount[nutrient] = (nutrientCount[nutrient] || 0) + 1);
+    }
+    
+    // Remove DOM Elements before showing the results
+    app.$categoriesList.fadeOut();
+    for (let i = 0; i < app.$selectedList.children().length; i++) {
+        app.$selectedList.children().fadeOut();
+    }
+}
+
 // Function: Init
 // Initializes the application
 app.init = () => {
     // Caching selectors
-    app.$addButton = $('#addIngredientButton');
+    app.$makeSmoothie = $('#makeSmoothie');
     app.$selectedList = $('#selectedList');
     app.$availableContainer = $('#availableContainer');
     app.$infoContainer = $('#infoContainer');
@@ -320,6 +352,10 @@ app.init = () => {
     app.displaySelectedIngredients();
 
     app.displayCategories();
+
+    // Event listener for the [MAKE MY SMOOTHIE] button
+    app.$makeSmoothie.on('click', app.makeTheSmoothie);
+    // app.$makeSmoothie.hide();
 };
 
 $(function() {
