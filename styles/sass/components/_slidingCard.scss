@@ -1,11 +1,35 @@
 .slidingCard {
     position: absolute;
-    top: 0;
+    bottom: 0;
     right: 100%;
     width: 100%;
     transition: .5s right;
+    background: $colorAccentDark;
 
     &Active {
         right: 0;
+    }
+
+    &Close {
+        background: 0;
+        border: 0;
+        font-size: 3.2rem;
+        display: block;
+        margin-left: auto;
+    }
+
+    &Container {
+        padding: 2.4rem 0;
+    }
+
+    &Title {
+        text-transform: capitalize;
+        font-size: 4rem;
+    }
+
+    &ImgContainer {
+        border-radius: 1.8em;
+        position: relative;
+        overflow: hidden;
     }
 }

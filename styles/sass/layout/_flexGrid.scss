@@ -20,5 +20,9 @@
 
 .columnLeft,
 .columnRight {
-    width: 50%;
+    flex: 1 1 calc((100% - #{$gridGutter}) / 2);
+}
+
+.columnLeft {
+    margin-right: $gridGutter;
 }

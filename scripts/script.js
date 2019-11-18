@@ -154,28 +154,39 @@ app.displayIngredientInfo = function() {
     const nutrientsHtml = ingredientInfo.nutrients.map(nutrient => `<li class="ingredientInfoItem">${nutrient}</li>`);
 
     const htmlToAppend = `
-        <article class="ingredientInfo">
-            <header>
-                <div class="ingredientInfoImg">
-                    <img src="./assets/ingredientPictures/${ingredientInfo.img}" alt="${ingredientInfo.name}, a ${ingredientInfo.type} ingredient for smoothies">
-                </div>
-                <h3 class="ingredientInfoTitle">${ingredientInfo.name}</h3>
+        <div class="wrapper slidingCardContainer flex">
+            <header class="slidingCardImgContainer columnLeft">
+                <img src="./assets/ingredientPictures/${ingredientInfo.img}" alt="${ingredientInfo.name}, a ${ingredientInfo.type} ingredient for smoothies" class="slidingCardImg">
             </header>
                 
-            <section class="ingredientInfoText">
+            <main class="slidingCardMain ingredientInfo columnRight">
+                <button class="slidingCardClose">
+                    <i class="fas fa-times"></i>
+                </button>
+                <h3 class="slidingCardTitle">${ingredientInfo.name}</h3>
+                <h3 class="ingredientInfoTitle">Nutritional Information</h3>
                 <ul class="ingredientInfoList">
                     ${nutrientsHtml.join('\n')}
                 </ul>
-                <button class="ingredientInfoButton" data-ingredient="${ingredientInfo.name}">Add ${ingredientInfo.name}</button>
-            </section>
-        </article>
+                <button class="button ingredientInfoButton" data-ingredient="${ingredientInfo.name}">Add ${ingredientInfo.name}</button>
+            </main>
+        </div>
     `;
 
     app.$infoContainer.append(htmlToAppend);
     app.$infoContainer.addClass('slidingCardActive');
 
-    // Event handler for the [ADD ingredient] button
+    // Event listener for the [ADD ingredient] button
     $('.ingredientInfoButton').on('click', app.addSelectedIngredient);
+
+    // Event listener for the [X] button
+    $('.slidingCardClose').on('click', app.closeSlidingCard);
+}
+
+// Function: Close Sliding Card
+// Removes the sliding card from the screen
+app.closeSlidingCard = () => {
+    app.$slidingCard.removeClass('slidingCardActive');
 }
 
 // Function: Add Selected Ingredient
@@ -198,6 +209,9 @@ app.addSelectedIngredient = function () {
 
     // Disable this button so it cannot be added twice
     $(this).attr('disabled', true);
+
+    // Closes the slidingCard element
+    app.closeSlidingCard();
 }
 
 // Function: Remove Selected Ingredient
@@ -301,6 +315,7 @@ app.init = () => {
     app.$availableContainer = $('#availableContainer');
     app.$infoContainer = $('#infoContainer');
     app.$categoriesList = $('#categoriesList');
+    app.$slidingCard = $('.slidingCard');
 
     app.displaySelectedIngredients();
 

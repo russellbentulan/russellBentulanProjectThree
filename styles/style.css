@@ -306,7 +306,13 @@ h4 {
 
 .columnLeft,
 .columnRight {
-  width: 50%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 calc((100% - 5rem) / 2);
+          flex: 1 1 calc((100% - 5rem) / 2);
+}
+
+.columnLeft {
+  margin-right: 5rem;
 }
 
 .header {
@@ -421,13 +427,37 @@ h4 {
 
 .slidingCard {
   position: absolute;
-  top: 0;
+  bottom: 0;
   right: 100%;
   width: 100%;
   -webkit-transition: .5s right;
   transition: .5s right;
+  background: #D3392B;
 }
 
 .slidingCardActive {
   right: 0;
+}
+
+.slidingCardClose {
+  background: 0;
+  border: 0;
+  font-size: 3.2rem;
+  display: block;
+  margin-left: auto;
+}
+
+.slidingCardContainer {
+  padding: 2.4rem 0;
+}
+
+.slidingCardTitle {
+  text-transform: capitalize;
+  font-size: 4rem;
+}
+
+.slidingCardImgContainer {
+  border-radius: 1.8em;
+  position: relative;
+  overflow: hidden;
 }
