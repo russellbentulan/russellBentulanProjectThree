@@ -20,15 +20,15 @@
     }
 
     @if $breakpoint == sm {
-        @media (max-width: 680px) {  @content };
+        @media (min-width: 680px) {  @content };
     }
 
     @if $breakpoint == md {
-        @media (max-width: 900px) { @content };
+        @media (min-width: 900px) { @content };
     }
 
     @if $breakpoint == lg {
-        @media (max-width: 1240px) { @content };
+        @media (min-width: 1240px) { @content };
     }
 
     @if $breakpoint == xxl {

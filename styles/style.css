@@ -204,25 +204,13 @@ html {
 
 @media (min-width: 1800px) {
   html {
-    font-size: 75%;
+    font-size: 100%;
   }
 }
 
-@media (max-width: 900px) {
+@media (min-width: 900px) {
   html {
-    font-size: 50%;
-  }
-}
-
-@media (max-width: 680px) {
-  html {
-    font-size: 56.25%;
-  }
-}
-
-@media (max-width: 420px) {
-  html {
-    font-size: 43.75%;
+    font-size: 62.5%;
   }
 }
 
@@ -240,11 +228,6 @@ img {
 
 ul {
   list-style: none;
-}
-
-.mainImg {
-  max-width: 300px;
-  margin-left: auto;
 }
 
 body {
@@ -267,14 +250,32 @@ h4 {
   text-align: center;
 }
 
+@media (min-width: 900px) {
+  .siteTitle {
+    font-size: 6.2rem;
+  }
+}
+
 .selectedIngredientsTitle {
   font-size: 2rem;
   text-transform: capitalize;
 }
 
+@media (min-width: 900px) {
+  .selectedIngredientsTitle {
+    font-size: 3.2rem;
+  }
+}
+
 .selectedIngredientsItem {
   font-size: 2rem;
   text-transform: capitalize;
+}
+
+@media (min-width: 900px) {
+  .selectedIngredientsItem {
+    font-size: 3.2rem;
+  }
 }
 
 .availableIngredientsTitle {
@@ -283,23 +284,67 @@ h4 {
   letter-spacing: .3px;
 }
 
+@media (min-width: 900px) {
+  .availableIngredientsTitle {
+    font-size: 4rem;
+  }
+}
+
 .availableIngredientsButton {
   text-transform: capitalize;
   font-size: 2.4rem;
   font-weight: 600;
 }
 
+@media (min-width: 900px) {
+  .availableIngredientsButton {
+    font-size: 3.2rem;
+  }
+}
+
+.intro {
+  margin-top: 3.2rem;
+  font-size: 2.4rem;
+}
+
+.introTitle {
+  font-size: 3.8rem;
+}
+
+.textContainer > *:not(:last-child) {
+  margin-bottom: 2rem;
+}
+
 .button {
   position: relative;
-  padding: .8rem 1.6rem;
+  padding: .8rem 1.2rem;
   font-family: "Asap", sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   text-transform: uppercase;
   background: transparent;
   border: 2px solid #151D1C;
   border-radius: 8px;
   -webkit-transition: .15s all;
   transition: .15s all;
+}
+
+@media (max-width: 420px) {
+  .button {
+    font-size: 1rem;
+    padding: .8rem 1.2rem;
+  }
+}
+
+@media (min-width: 680px) {
+  .button {
+    font-size: 3.2rem;
+  }
+}
+
+@media (min-width: 1240px) {
+  .button {
+    font-size: 3.6   rem;
+  }
 }
 
 .button::after {
@@ -423,7 +468,7 @@ h4 {
           justify-content: center;
 }
 
-@media (max-width: 900px) {
+@media (min-width: 900px) {
   .flexNoWrap {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
@@ -443,6 +488,11 @@ h4 {
 
 .header {
   padding: 2rem 0;
+}
+
+.mainImg {
+  max-width: 370px;
+  margin-left: auto;
 }
 
 .categoriesContainer {
@@ -491,6 +541,7 @@ h4 {
 
 .availableIngredientsContainer {
   text-align: center;
+  padding-top: 3.2rem;
 }
 
 .availableIngredientsTitle {
@@ -559,12 +610,26 @@ h4 {
   padding: 3.2rem 0;
   position: fixed;
   bottom: 0;
-  height: 80vh;
+  height: 85vh;
   overflow-y: scroll;
 }
 
+.result .wrapper {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 .resultTitle {
-  color: #FDFBD1;
+  color: #F4E27C;
   font-size: 3.2rem;
   text-transform: uppercase;
   letter-spacing: -1.2px;
@@ -576,9 +641,10 @@ h4 {
 }
 
 .resultButton {
-  display: inline-block;
+  display: block;
   margin: 2.4rem auto;
-  font-size: 3.6rem;
+  font-size: 2.4rem;
+  background-color: #FEF8F8;
 }
 
 .resultButton::after {
@@ -587,14 +653,24 @@ h4 {
 }
 
 .nutrientsTitle {
-  color: #FDFBD1;
-  font-size: 2.4rem;
+  color: #F4E27C;
+  font-size: 2.8rem;
+  margin: 1.2rem 0;
 }
 
 .nutrientsItem {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 50%;
           flex: 1 1 50%;
-  font-size: 1.6rem;
-  text-transform: uppercase;
+  font-size: 2rem;
+  text-transform: capitalize;
+  margin-bottom: .5rem;
+}
+
+.intro {
+  background-color: #F4E27C;
+  padding: 10rem 0;
+  -webkit-clip-path: polygon(100% 0, 100% 88%, 0 100%, 0 12%);
+          clip-path: polygon(100% 0, 100% 88%, 0 100%, 0 12%);
+  margin-top: -2rem;
 }

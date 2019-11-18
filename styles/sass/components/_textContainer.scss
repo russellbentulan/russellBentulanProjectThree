@@ -1,0 +1,6 @@
+.textContainer {
+    // Adds spacing between lines of text inside a container
+    & > *:not(:last-child) {
+        margin-bottom: 2rem;
+    }
+}

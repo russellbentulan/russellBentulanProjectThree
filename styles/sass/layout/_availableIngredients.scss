@@ -1,13 +1,14 @@
 .availableIngredients {
     display: flex;
     flex-wrap: wrap;
-    
+
     &Item {
         flex: 1 1 calc(100% / 3);
     }
 
     &Container {
         text-align: center;
+        padding-top: $gutterVerticalLg;
     }
 
     &Title {

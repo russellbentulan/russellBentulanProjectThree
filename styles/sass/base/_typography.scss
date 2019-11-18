@@ -19,17 +19,29 @@ h4 {
     line-height: .85;
     margin-right: auto;
     text-align: center;
+
+    @include respond(md) {
+        font-size: 6.2rem;
+    }
 }
 
 .selectedIngredients {
     &Title {
         font-size: 2rem;
         text-transform: capitalize;
+
+        @include respond(md) {
+            font-size: 3.2rem;
+        }
     }
 
     &Item {
         font-size: 2rem;
         text-transform: capitalize;
+        
+        @include respond(md) {
+            font-size: 3.2rem;
+        }
     }
 }
 
@@ -38,11 +50,27 @@ h4 {
         text-transform: capitalize;
         font-size: 3.2rem;
         letter-spacing: .3px;
+
+        @include respond(md) {
+            font-size: 4rem;
+        }
     }
 
     &Button {
         text-transform: capitalize;
         font-size: 2.4rem;
         font-weight: 600;
+
+        @include respond(md) {
+            font-size: 3.2rem;
+        }
+    }
+}
+
+.intro {
+    margin-top: $gutterVerticalLg;
+    font-size: 2.4rem;
+    &Title {
+        font-size: 3.8rem;
     }
 }

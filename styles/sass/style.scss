@@ -5,7 +5,8 @@
 @import 'base/base',
         'base/typography';
 
-@import 'components/buttons',
+@import 'components/textContainer',
+        'components/buttons',
         'components/slidingCard';
 
 @import 'layout/flexGrid',
@@ -14,4 +15,5 @@
         'layout/selectedIngredients',
         'layout/availableIngredients',
         'layout/ingredientInfo',
-        'layout/result';
+        'layout/result',
+        'layout/intro';

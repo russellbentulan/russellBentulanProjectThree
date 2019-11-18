@@ -135,6 +135,9 @@ app.displaySelectedIngredients = () => {
         app.$makeSmoothie.slideDown();
     }
 
+    // Change the text for the [Smoothie Ingredients] heading
+    $('#selectedTitle').text('Your smoothie ingredients:');
+
     // Event handler for the [-] button
     $('.removeSelectedIngredient').on('click', app.removeSelectedIngredient);
 }
@@ -305,7 +308,7 @@ app.displayCategories = () => {
                 <button class="categoriesButton button">${category}</button>
             </li>
         `;
-        app.$categoriesList.append(htmlToAppend);
+        app.$categoriesList.hide().append(htmlToAppend).delay(500).fadeIn();
     });
 
     // Event listener for the [category] buttons
@@ -380,7 +383,7 @@ app.makeTheSmoothie = function() {
     `;
 
     // Wait for other elements to fade out before appending this element
-    $(htmlToAppend).hide().appendTo('.main').delay(1500).fadeIn();
+    $(htmlToAppend).hide().appendTo('.main').delay(1000).fadeIn();
 
     // Event listener for the [Start Over] button
     $('.resultButton').on('click', app.restart);
@@ -390,12 +393,19 @@ app.makeTheSmoothie = function() {
 // Reset the app
 app.restart = function () {
     $('.result').fadeOut();
-    app.$categoriesList.fadeIn();
-    app.$selectedList.children().fadeIn();
     $('.mainImg').fadeIn();
     $('.selectedIngredientsTitle').fadeIn();
+    app.displayCategories();
+    app.displaySelectedIngredients();
     app.init();
 } 
+
+// Function: Start
+app.start = function() {
+    $('.intro').fadeOut();
+    app.displayCategories();
+    app.displaySelectedIngredients();
+}
 
 // Function: Init
 // Initializes the application
@@ -407,14 +417,14 @@ app.init = () => {
     app.$infoContainer = $('#infoContainer');
     app.$categoriesList = $('#categoriesList');
     app.$slidingCard = $('.slidingCard');
+    app.$startButton = $('#startButton');
 
     // User selected ingedients
     // Fill when the user clicks the [ADD ingredient.name] button
     app.selectedIngredients = [];
 
-    app.displaySelectedIngredients();
-
-    app.displayCategories();
+    // Event Listener for the [GET STARTED] button
+    app.$startButton.on('click', app.start);
 
     // Event listener for the [MAKE MY SMOOTHIE] button
     app.$makeSmoothie.on('click', app.makeTheSmoothie);

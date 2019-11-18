@@ -5,11 +5,18 @@
     padding: $gutterVerticalLg 0;
     position: fixed;
     bottom: 0;
-    height: 80vh;
+    height: 85vh;
     overflow-y: scroll;
 
+    .wrapper {
+        align-items: center;
+        flex-flow: column nowrap;
+        align-items: center;
+        justify-content: center;
+    }
+
     &Title {
-        color: $colorAccentLight;
+        color: $colorAccent;
         font-size: 3.2rem;
         text-transform: uppercase;
         letter-spacing: -1.2px;
@@ -21,9 +28,10 @@
     }
 
     &Button {
-        display: inline-block;
+        display: block;
         margin: $gutterVerticalMd auto;
-        font-size: 3.6rem;
+        font-size: 2.4rem;
+        background-color: $colorWhite;
         &::after {
             transform: translate(0,0);
         }
@@ -32,13 +40,15 @@
 
 .nutrients {
     &Title {
-        color: $colorAccentLight;
-        font-size: 2.4rem;
+        color: $colorAccent;
+        font-size: 2.8rem;
+        margin: 1.2rem 0;
     }
 
     &Item {
         flex: 1 1 50%;
-        font-size: 1.6rem;
-        text-transform: uppercase;
+        font-size: 2rem;
+        text-transform: capitalize;
+        margin-bottom: .5rem;
     }
 }
