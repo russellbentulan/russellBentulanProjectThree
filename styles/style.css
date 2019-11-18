@@ -491,7 +491,7 @@ h4 {
 }
 
 .mainImg {
-  max-width: 370px;
+  max-width: 300px;
   margin-left: auto;
 }
 
@@ -673,4 +673,12 @@ h4 {
   -webkit-clip-path: polygon(100% 0, 100% 88%, 0 100%, 0 12%);
           clip-path: polygon(100% 0, 100% 88%, 0 100%, 0 12%);
   margin-top: -2rem;
+}
+
+.footer {
+  background: #D3392B;
+  color: #FEF8F8;
+  padding: 1rem 0;
+  text-align: center;
+  font-size: 1.4rem;
 }

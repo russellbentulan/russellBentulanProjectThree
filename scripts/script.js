@@ -395,14 +395,15 @@ app.restart = function () {
     $('.result').fadeOut();
     $('.mainImg').fadeIn();
     $('.selectedIngredientsTitle').fadeIn();
+    app.init();
     app.displayCategories();
     app.displaySelectedIngredients();
-    app.init();
 } 
 
 // Function: Start
 app.start = function() {
     $('.intro').fadeOut();
+    $('.footer').fadeOut();
     app.displayCategories();
     app.displaySelectedIngredients();
 }
