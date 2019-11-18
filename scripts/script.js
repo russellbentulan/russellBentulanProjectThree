@@ -225,45 +225,48 @@ app.removeSelectedIngredient = function () {
 
 // Function: Display Available Ingredients
 // Places all availalbe ingredients onto the page
-app.displayAvailableIngredients = () => {
+app.displayAvailableIngredients = function() {
     // Empty the container element
     app.$availableContainer.empty();
 
-    // Display all of the ingredients according to their category type
-    app.categories.forEach(category => {
-        const htmlToAppend = `
-            <section class="availableIngredientsCategory">
-                <h3 class="availableIngredientsTitle">${category}</h3>
-                <ul class="availableIngredients" id="${category}Category"></ul>
-            </section>
-        `;
-        app.$availableContainer.append(htmlToAppend);
-    });
+    // Get the category that was chosen by the user
+    const category = $(this).text().trim();
 
-    // Get the parent element
-    const $parentElement = $('.availableIngredients').closest('section');
+    // Get the ingredients with the right category
+    const ingredientsInCategory = app.ingredients.filter(ingredient => ingredient.type === category);
 
-    // Puts all of the ingredients into the parent element
-    app.ingredients.forEach(ingredient => {
+    // Create the markup for each ingredient
+    const ingredientsHtml = ingredientsInCategory.map(ingredient => {
 
-        // Check if the object exists in the selectedIngredients array
-        // Disable the button if it has already been selected by the user
-        let status = '';
+        // Find out if the ingredient has already been chosen by the user
         const selected = app.selectedIngredients.filter(selectedIngredient => selectedIngredient.name === ingredient.name);
+
+        // Disable the ingredient if it's already in the chosen ingredients list
+        let status = '';
         if (selected.length) {
             status = 'disabled';
         }
 
-        // Put the item into the appropriate category list element
         const htmlToAppend = `
             <li class="availableIngredientsItem">
                 <button class="availableIngredientsButton" ${status}>${ingredient.name}</button>
             </li>
         `;
-        $parentElement.find(`#${ingredient.type}Category`).append(htmlToAppend);
+        return htmlToAppend
     });
-    
-    // Event handler for the [INGREDIENT] button
+
+    // Put the element onto the page
+    const htmlToAppend = `
+        <section class="availableIngredientsCategory">
+            <h3 class="availableIngredientsTitle">${category}</h3>
+            <ul class="availableIngredients">
+                ${ingredientsHtml.join('\n')}
+            </ul>
+        </section>
+    `;
+    app.$availableContainer.append(htmlToAppend);
+
+    // Event listener for the [ingredient.name] buttons
     $('.availableIngredientsButton').on('click', app.displayIngredientInfo);
 }
 
@@ -285,7 +288,7 @@ app.displayCategories = () => {
     });
 
     // Event listener for the [category] buttons
-    
+    $('.categoriesButton').on('click', app.displayAvailableIngredients);
 }
 
 // Function: Init
@@ -302,7 +305,6 @@ app.init = () => {
 
     // Styling WIP
     app.displayCategories();
-    app.displayAvailableIngredients();
 
     // Event handler for the [ADD AN INGREDIENT] button
     app.$addButton.on('click', app.displayCategories);
