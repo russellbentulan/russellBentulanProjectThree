@@ -272,6 +272,18 @@ h4 {
   text-transform: capitalize;
 }
 
+.availableIngredientsTitle {
+  text-transform: capitalize;
+  font-size: 3.2rem;
+  letter-spacing: .3px;
+}
+
+.availableIngredientsButton {
+  text-transform: capitalize;
+  font-size: 2.4rem;
+  font-weight: 600;
+}
+
 .wrapper {
   max-width: 114rem;
   width: 90%;
@@ -349,22 +361,30 @@ h4 {
   color: #627D7B;
 }
 
+.availableIngredients {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.availableIngredientsItem {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 calc(100% / 3);
+          flex: 1 1 calc(100% / 3);
+}
+
 .availableIngredientsContainer {
   text-align: center;
 }
 
 .availableIngredientsTitle {
-  text-transform: capitalize;
-  font-size: 3.2rem;
-  letter-spacing: .3px;
   margin-bottom: .8rem;
 }
 
 .availableIngredientsButton {
   margin: .8rem auto;
-  text-transform: capitalize;
-  font-size: 2.4rem;
-  font-weight: 600;
   background: transparent;
   border: 0;
   color: #D3392B;
@@ -388,6 +408,34 @@ h4 {
 
 .availableIngredientsButton[disabled] {
   color: #627D7B;
+}
+
+.ingredientInfoTitle {
+  font-size: 2.4rem;
+}
+
+.ingredientInfoList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+}
+
+.ingredientInfoItem {
+  font-size: 2rem;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 50%;
+          flex: 1 1 50%;
+  font-size: 1.8rem;
+  text-transform: capitalize;
+  margin: 4px 0;
+}
+
+.ingredientInfo *:not(:last-child) {
+  margin-bottom: 8px;
 }
 
 .button {
@@ -425,6 +473,17 @@ h4 {
           transform: translate(0, 0) scale(1.05, 1.25);
 }
 
+.buttonDark {
+  text-shadow: 1px 1px 0 rgba(243, 127, 120, 0.5);
+  background-color: #fccdcc;
+  -webkit-transition: .2s all;
+  transition: .2s all;
+}
+
+.buttonDark:hover, .buttonDark:focus {
+  text-shadow: 1px 1px 0 #F37F78, 2px 2px 0 #F37F78;
+}
+
 .slidingCard {
   position: absolute;
   bottom: 0;
@@ -432,7 +491,9 @@ h4 {
   width: 100%;
   -webkit-transition: .5s right;
   transition: .5s right;
-  background: #D3392B;
+  background: #FDFBD1;
+  -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
 }
 
 .slidingCardActive {
@@ -440,15 +501,23 @@ h4 {
 }
 
 .slidingCardClose {
+  color: #151D1C;
   background: 0;
   border: 0;
   font-size: 3.2rem;
-  display: block;
-  margin-left: auto;
+  position: absolute;
+  right: 5%;
+  -webkit-transition: .2s color;
+  transition: .2s color;
+}
+
+.slidingCardClose:hover {
+  color: #fccdcc;
 }
 
 .slidingCardContainer {
   padding: 2.4rem 0;
+  min-height: 50vh;
 }
 
 .slidingCardTitle {
@@ -457,7 +526,15 @@ h4 {
 }
 
 .slidingCardImgContainer {
-  border-radius: 1.8em;
   position: relative;
   overflow: hidden;
+}
+
+.slidingCardImg {
+  border-radius: 1.8em;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }

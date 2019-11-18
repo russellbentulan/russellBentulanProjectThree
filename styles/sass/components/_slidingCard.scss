@@ -4,22 +4,30 @@
     right: 100%;
     width: 100%;
     transition: .5s right;
-    background: $colorAccentDark;
+    background: #FDFBD1;
+    box-shadow: 0 0 2px rgba(0,0,0,.3);
 
     &Active {
         right: 0;
     }
 
     &Close {
+        color: $colorText;
         background: 0;
         border: 0;
         font-size: 3.2rem;
-        display: block;
-        margin-left: auto;
+        position: absolute;
+        right: 5%;
+        transition: .2s color;
+
+        &:hover {
+            color: $colorAccentLight;
+        }
     }
 
     &Container {
-        padding: 2.4rem 0;
+        padding: $gutterVerticalMd 0;
+        min-height: 50vh;
     }
 
     &Title {
@@ -28,8 +36,16 @@
     }
 
     &ImgContainer {
-        border-radius: 1.8em;
         position: relative;
         overflow: hidden;
+    }
+
+    &Img {
+        border-radius: 1.8em;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
     }
 }

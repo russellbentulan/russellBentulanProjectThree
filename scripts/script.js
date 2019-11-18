@@ -102,7 +102,7 @@ app.ingredients = [
 ];
 
 // Category types
-app.categories = ['fruit', 'thickener', 'liquid', 'mixin'];
+app.categories = ['fruit', 'thickener', 'mixin', 'liquid'];
 
 // User selected ingedients
 // Fill when the user clicks the [ADD ingredient.name] button
@@ -168,7 +168,7 @@ app.displayIngredientInfo = function() {
                 <ul class="ingredientInfoList">
                     ${nutrientsHtml.join('\n')}
                 </ul>
-                <button class="button ingredientInfoButton" data-ingredient="${ingredientInfo.name}">Add ${ingredientInfo.name}</button>
+                <button class="button buttonDark ingredientInfoButton" data-ingredient="${ingredientInfo.name}">Add ${ingredientInfo.name}</button>
             </main>
         </div>
     `;
@@ -319,11 +319,7 @@ app.init = () => {
 
     app.displaySelectedIngredients();
 
-    // Styling WIP
     app.displayCategories();
-
-    // Event handler for the [ADD AN INGREDIENT] button
-    app.$addButton.on('click', app.displayCategories);
 };
 
 $(function() {

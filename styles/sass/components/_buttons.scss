@@ -30,4 +30,15 @@
             transform: translate(0,0) scale(1.05, 1.25);
         }
     }
+
+    &Dark {
+        text-shadow: 1px 1px 0 rgba($colorAccent, .5);
+        background-color: $colorAccentLight;
+        transition: .2s all;
+        &:hover,
+        &:focus {
+            text-shadow: 1px 1px 0 $colorAccent,
+                         2px 2px 0 $colorAccent;
+        }
+    }
 }
