@@ -318,24 +318,70 @@ app.displayCategories = () => {
 
 // Function: Make The Smoothie
 // Add up all the selected ingredients and display the results to the page
-app.makeTheSmoothie = () => {
-    // Join together the ingredient names
-    const ingredientNames = app.selectedIngredients.map(ingredient => ingredient.name);
-    const nameString = ingredientNames.join(', ');
+app.makeTheSmoothie = function() {
 
-    // Add up the nutritional information
+    ingredientInfo = {};
+
+    app.selectedIngredients.forEach(ingredient => ingredientInfo[ingredient.name] = ingredient.nutrients);
+
+    // Join together the ingredient names
+    const ingredientNames = Object.keys(ingredientInfo);
+
+    // Add up the nutritional information duplicates
     let nutrientCount = {};
-    const ingredientNutrients = app.selectedIngredients.map(ingredient => ingredient.nutrients);
-    for (let i = 0; i < ingredientNutrients.length; i++) {
-        nutrients = ingredientNutrients[i];
-        nutrients.forEach(nutrient => nutrientCount[nutrient] = (nutrientCount[nutrient] || 0) + 1);
+    for (ingredient in ingredientInfo) {
+        const nutrients = ingredientInfo[ingredient];
+
+        nutrients.forEach(nutrient => {
+            nutrientCount[nutrient] = (nutrientCount[nutrient] || 0) + 1;
+        });
     }
-    
+
     // Remove DOM Elements before showing the results
     app.$categoriesList.fadeOut();
-    for (let i = 0; i < app.$selectedList.children().length; i++) {
-        app.$selectedList.children().fadeOut();
-    }
+    app.$selectedList.children().fadeOut();
+    $('.mainImg').fadeOut();
+    $('.selectedIngredientsTitle').fadeOut();
+    $(this).fadeOut();
+
+    // Set up each nutrient item depending on how many times it shows up in the ingredients info
+    const nutrientHtml = Object.keys(nutrientCount)
+        .sort()
+        .map(nutrient => {
+            let htmlToAppend = '';
+            if (nutrientCount[nutrient] > 1) {
+                htmlToAppend = `
+                    <li class="nutrientsItem">
+                        ${nutrient} 
+                        <span class="nutrientsCount">
+                            (${nutrientCount[nutrient]})
+                        </span>
+                    </li>`;
+            } else {
+                htmlToAppend = `<li class="nutrientsItem">${nutrient}</li>`
+            }
+
+            return htmlToAppend;
+    });
+
+    const htmlToAppend = `
+        <section class="result">
+            <div class="wrapper flex">
+                <section class="columnLeft">
+                    <h1 class="resultTitle">Your Smoothie Recipe</h1>
+                    <p class="resultIngredients">${ingredientNames.join(', ')}</p>
+                </section>
+                <section class="columnRight">
+                    <h2 class="nutrientsTitle">Nutritional Information</h2>
+                    <ul class="nutrientsList flex">
+                        ${nutrientHtml.join('\n')}
+                    </ul>
+                </section>
+            </div>
+        </section>
+    `;
+
+    $(htmlToAppend).hide().appendTo('.main').delay(1500).fadeIn();
 }
 
 // Function: Init
